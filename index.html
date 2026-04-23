@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft AI Certification Map 2026 — Paths by Job Role</title>
+<meta name="description" content="Interactive map of Microsoft AI certifications 2026: 55 credentials across Azure, M365, Power Platform, Fabric and Security — filtered by job role, platform and level. Includes new Agentic AI (AB) series, 10+ new certs, and 11 retiring in 2026.">
+<meta name="author" content="Microsoft Certifications Overview">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Microsoft AI Certification Map 2026 — Paths by Job Role">
+<meta property="og:description" content="Interactive overview of all Microsoft certifications realigned around AI Agents, Copilot, and Microsoft Foundry. Filter by role, platform, level. Includes new AB (Agentic AI) series.">
+<meta property="og:image" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft AI Certification Map 2026">
+<meta name="twitter:description" content="55 Microsoft certifications mapped by job role — AI Agents, Copilot, Azure Foundry, Power Platform, Security & more. New Agentic AI (AB) series included.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f1f1f1; --surface:#FFF; --border:rgba(0,0,0,.07); --border2:rgba(0,0,0,.16);
+  --ink:#1E1E1E; --ink2:#444; --ink3:#888; --ink4:#BBB;
+  --ms:#FF7A2F; --ms-l:rgba(255,122,47,.07); --ms-m:rgba(255,122,47,.16);
+  --lv-ab:#D4279C; --lv-fund:#4A7FC1; --lv-assoc:#2E8B6E; --lv-expert:#A07020; --lv-spec:#6B5EA8; --lv-ret:#9BA3B2;
+  --new-bg:#FEF4F0; --new-ink:#B84A1E; --new-br:#F0B8A0;
+  --beta-bg:#F3F0FB; --beta-ink:#5046A0; --beta-br:#B8B0E0;
+  --ret-bg:#F0F1F3; --ret-ink:#7A8294; --ret-br:#C8CCD6;
+  --ret-card:#F2F3F4;
+  --pg-grad:linear-gradient(135deg,#FF7A2F 0%,#D4279C 100%);
+  --pg-shadow:0 2px 10px rgba(0,0,0,.07);
+  --pg-shadow-h:0 6px 22px rgba(0,0,0,.13);
+  --nm-dark:#d4d4d4;--nm-light:#ffffff;--nm-raised:5px 5px 10px #d4d4d4,-5px -5px 10px #fff;--nm-inset:inset 4px 4px 8px #d4d4d4,inset -4px -4px 8px #fff;--nm-card:3px 3px 7px rgba(0,0,0,.08),-3px -3px 7px rgba(255,255,255,.95);--font:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; --mono:'JetBrains Mono','Cascadia Code','Consolas',monospace;
+  --rad:12px; --tr:0.2s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:#f1f1f1;color:var(--ink);font-size:13px;line-height:1.5}
+.page{max-width:1440px;margin:0 auto;background:var(--bg)}
+
+/* ── HEADER ── */
+.header{background:var(--surface);padding:24px 36px 0;display:flex;flex-direction:column;border-bottom:none;box-shadow:0 4px 12px #d4d4d4}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:28px;padding-bottom:20px}
+.header-left{flex:1;min-width:0}
+.ms-logo-row{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.ms-sq{display:grid;grid-template-columns:1fr 1fr;gap:2px;width:20px;height:20px}
+.ms-sq span{border-radius:1px}
+.ms-sq span:nth-child(1){background:#F25022}.ms-sq span:nth-child(2){background:#7FBA00}
+.ms-sq span:nth-child(3){background:#00A4EF}.ms-sq span:nth-child(4){background:#FFB900}
+.ms-wm{font-size:11px;color:var(--ink3);font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.h-title{font-size:25px;font-weight:700;color:var(--ink);line-height:1.2}
+.h-title em{font-style:normal;background:var(--pg-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h-sub{font-size:12px;color:var(--ink3);margin-top:7px;line-height:1.65;max-width:500px}
+.h-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{padding:3px 12px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.03em;border:1px solid}
+.c-date{background:rgba(255,122,47,.1);color:#CC5200;border-color:rgba(255,122,47,.3)}
+.c-new{background:rgba(212,39,156,.08);color:#A0177A;border-color:rgba(212,39,156,.25)}
+.c-warn{background:rgba(160,112,32,.08);color:#7A5200;border-color:rgba(160,112,32,.25)}
+
+/* ── LEGEND ── */
+.legend{background:var(--bg);border:none;border-radius:var(--rad);padding:14px 16px;min-width:215px;flex-shrink:0;box-shadow:var(--nm-raised)}
+.leg-hd{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:6px}
+.leg-hint{font-size:9.5px;color:var(--ink3);margin-bottom:9px;line-height:1.4}
+.leg-lv-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink2);margin-bottom:4px;cursor:pointer;border-radius:6px;padding:3px 6px;transition:background var(--tr)}
+.leg-lv-row:hover{background:rgba(0,0,0,.05)}
+.leg-lv-row.active-filter{position:relative;overflow:hidden;background:var(--bg);box-shadow:var(--nm-inset);outline:none;padding-left:8px}
+.leg-lv-row.active-filter::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--pg-grad)}
+.leg-strip{width:16px;height:3px;border-radius:2px;flex-shrink:0}
+.leg-div{height:1px;background:var(--border);margin:8px 0}
+.leg-bd-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink2);margin-bottom:4px}
+.leg-bd{font-size:8px;font-weight:700;padding:1.5px 5px;border-radius:3px;text-transform:uppercase;letter-spacing:.03em;flex-shrink:0;border:1px solid;cursor:pointer;transition:all var(--tr);min-width:34px;text-align:center}
+.leg-bd:hover{opacity:.75}
+.leg-bd.active-filter{outline:none;box-shadow:0 0 0 2px #FF7A2F,0 0 0 3px #D4279C}
+.leg-clear{font-size:9.5px;color:var(--ink3);cursor:pointer;text-decoration:underline;margin-top:6px;display:none}
+.leg-clear.visible{display:block}
+
+/* ── HEADER STATS ── */
+.header-stats{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 0 14px;border-top:1px solid var(--border);font-size:11px;}
+.sum-label{font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.09em;font-size:9px}
+.sum-stat{display:flex;align-items:center;gap:5px}
+.sum-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;opacity:.9}
+.sum-n{font-weight:700;color:var(--ink);font-size:13px;font-family:var(--mono);min-width:18px;text-align:right}
+.sum-n.is-zero{color:var(--ink4);font-weight:400}
+.sum-k{color:var(--ink3);font-size:10px;margin-left:2px}
+.sum-divider{width:1px;height:14px;background:var(--border);flex-shrink:0}
+.sum-of{color:var(--ink3);font-size:10.5px}
+.sum-of strong{color:var(--ink2)}
+.sum-reset{margin-left:auto;padding:3px 10px;cursor:pointer;font-size:10px;font-weight:600;color:#fff;background:var(--pg-grad);border:none;border-radius:20px;display:none;transition:opacity var(--tr);}
+.sum-reset.visible{display:block}
+.sum-reset:hover{opacity:.85}
+
+/* ── SHIFT BANNER ── */
+.shift{background:linear-gradient(135deg,rgba(255,122,47,.07) 0%,rgba(212,39,156,.07) 100%);border-left:3px solid transparent;border-image:var(--pg-grad) 1;padding:10px 36px;font-size:12px;color:var(--ink2);line-height:1.65}
+.shift strong{background:var(--pg-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+
+/* ── BODY ── */
+.body{display:grid;grid-template-columns:214px 1fr 186px}
+
+/* ── LEFT ── */
+.col-plat{background:var(--bg);padding:16px 12px;display:flex;flex-direction:column;gap:10px}
+.col-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:1px}
+.panel-hint{font-size:9.5px;color:var(--ink4);margin-bottom:3px;line-height:1.4}
+.plat-btn{display:block;width:100%;background:var(--bg);border:none;border-radius:var(--rad);padding:8px 10px;text-align:left;cursor:pointer;transition:all var(--tr);font-family:var(--font);box-shadow:var(--nm-raised)}
+.plat-btn:hover{box-shadow:6px 6px 14px #d4d4d4,-6px -6px 14px #fff}
+.plat-btn.active{position:relative;overflow:hidden;background:var(--bg);box-shadow:var(--nm-inset)}
+.plat-btn.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pg-grad)}
+.plat-btn.active .pb-name{background:var(--pg-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
+.pb-row{display:flex;align-items:center;gap:7px}
+.pb-iw{width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pb-name{font-size:11px;font-weight:700;color:var(--ink)}
+.pb-sub{font-size:9px;color:var(--ink3);margin-top:2px;padding-left:27px;line-height:1.3}
+.pb-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px;padding-left:27px}
+.pb-tag{font-size:8.5px;color:var(--ink3);background:rgba(0,0,0,.04);border:1px solid var(--border);border-radius:20px;padding:1px 6px}
+.plat-clear{display:none;width:100%;background:var(--bg);border:none;border-radius:var(--rad);padding:6px 10px;font-family:var(--font);font-size:10px;font-weight:600;color:var(--ink3);cursor:pointer;text-align:center;transition:all var(--tr);box-shadow:var(--nm-raised)}
+.plat-clear:hover{color:var(--ms);box-shadow:var(--nm-inset)}
+.plat-clear.visible{display:block}
+
+/* ── CENTER ── */
+.col-center{padding:16px 20px;display:flex;flex-direction:column}
+.role-section{padding:13px 0;border-bottom:1px solid var(--border);transition:opacity .25s ease,transform .3s ease;order:0}
+.role-section:last-child{border-bottom:none}
+.role-section.dim{opacity:.13;pointer-events:none}
+.role-section.no-match{display:none}
+.role-section.anchored{order:-2}
+.role-section.anchored.hide-anchor{display:none}
+.role-section.promoted{order:-1;border-bottom:2px solid transparent;border-image:var(--pg-grad) 1;margin-bottom:4px}
+.role-section.promoted .sec-title::after{content:' ↑';font-size:10px;font-weight:600;vertical-align:middle;margin-left:4px;background:var(--pg-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.role-section.level-section-dim{opacity:.13;pointer-events:none}
+.sec-hd{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.sec-title{font-size:14px;font-weight:600;color:var(--ink)}
+.sec-desc{font-size:11px;color:var(--ink3);margin-top:2px}
+.certs-row{display:flex;flex-wrap:wrap;gap:10px}
+.inline-group{width:100%;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--ink4);padding:5px 0 3px;border-top:1px solid var(--border);margin-top:5px;display:flex;align-items:center;gap:6px}
+
+/* ── CERT CARD ── */
+.cert-card{display:flex;flex-direction:column;text-decoration:none;background:var(--surface);border:none;border-left:3px solid var(--border2);border-radius:var(--rad);padding:8px 10px;width:192px;min-width:192px;max-width:192px;flex:0 0 192px;height:100px;overflow:hidden;box-shadow:var(--nm-card);transition:box-shadow var(--tr),transform var(--tr),opacity var(--tr);cursor:pointer}
+.cert-card:hover{box-shadow:5px 5px 12px rgba(0,0,0,.11),-5px -5px 12px rgba(255,255,255,.95)}
+.lv-ab:hover{box-shadow:-3px 0 0 #D4279C,5px 5px 12px rgba(0,0,0,.11),-5px -5px 12px rgba(255,255,255,.95)}
+.cert-card:active{transform:scale(0.95);box-shadow:var(--nm-inset)!important;transition:transform .08s ease,box-shadow .08s ease}
+@keyframes card-pop{0%{transform:scale(0.95)}50%{transform:scale(1.06)}75%{transform:scale(0.98)}100%{transform:scale(1)}}
+.cert-card.popping{animation:card-pop .45s cubic-bezier(.36,.07,.19,.97) both}
+.cert-card.badge-dim{opacity:.15;pointer-events:none}
+.cert-card.level-dim{opacity:.15;pointer-events:none}
+.lv-ab{border-left-color:transparent;box-shadow:-3px 0 0 #FF7A2F,var(--nm-card)}.lv-fund{border-left-color:var(--lv-fund)}.lv-assoc{border-left-color:var(--lv-assoc)}
+.lv-expert{border-left-color:var(--lv-expert)}.lv-spec{border-left-color:var(--lv-spec)}
+.lv-ret{border-left-color:var(--lv-ret);background:var(--ret-card)}
+.cert-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;flex-shrink:0}
+.cert-exam{font-family:var(--mono);font-size:9.5px;font-weight:500;color:var(--ink3)}
+.cert-badges{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end}
+.badge{font-size:7px;font-weight:700;padding:1px 4px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;border:1px solid}
+.b-new{background:var(--new-bg);color:var(--new-ink);border-color:var(--new-br)}
+.b-beta{background:var(--beta-bg);color:var(--beta-ink);border-color:var(--beta-br)}
+.b-ret{background:var(--ret-bg);color:var(--ret-ink);border-color:var(--ret-br);text-decoration:line-through}
+.cert-name{font-size:10px;font-weight:600;color:var(--ink);line-height:1.3;flex-shrink:0}
+.lv-ret .cert-name{color:var(--ink3)}
+.cert-level{font-size:8.5px;font-weight:500;margin-top:3px;color:var(--ink3);flex-shrink:0}
+.lv-ab .cert-level{background:var(--pg-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.lv-fund .cert-level{color:var(--lv-fund)}.lv-assoc .cert-level{color:var(--lv-assoc)}
+.lv-expert .cert-level{color:var(--lv-expert)}.lv-spec .cert-level{color:var(--lv-spec)}
+.cert-arrow{font-size:7.5px;color:var(--lv-ret);margin-top:2px;font-family:var(--mono);flex-shrink:0}
+.successor-group{display:flex;align-items:stretch;gap:0;flex:1 1 auto;min-width:0}
+.successor-group .cert-card{border-right:none;border-radius:var(--rad) 0 0 var(--rad);flex:0 0 192px;width:192px;min-width:192px;max-width:192px}
+.arrow-connector{display:flex;align-items:center;padding:0 4px;font-size:14px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-shrink:0;background:var(--pg-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.successor-group .ret-card{border-left:none;border-radius:0 var(--rad) var(--rad) 0;flex:1 1 120px;min-width:110px;max-width:140px}
+.ret-note{width:100%;margin-top:8px;background:rgba(255,122,47,.06);border:1px solid rgba(255,122,47,.2);border-radius:var(--rad);padding:7px 11px;font-size:10px;color:#994400;line-height:1.5}
+
+/* ── RIGHT ── */
+.col-roles{background:var(--bg);padding:16px 11px;display:flex;flex-direction:column;gap:9px}
+.role-btn{display:block;width:100%;background:var(--bg);border:none;border-radius:var(--rad);padding:9px 10px;text-align:left;cursor:pointer;transition:all var(--tr);font-family:var(--font);box-shadow:var(--nm-raised)}
+.role-btn:hover{box-shadow:6px 6px 14px #d4d4d4,-6px -6px 14px #fff}
+.role-btn.active{position:relative;overflow:hidden;background:var(--bg);box-shadow:var(--nm-inset)}
+.role-btn.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pg-grad)}
+.role-btn.active .rb-name{background:var(--pg-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
+.rb-name{font-size:11px;font-weight:700;color:var(--ink)}
+.rb-desc{font-size:9.5px;color:var(--ink3);margin-top:2px;line-height:1.35}
+.role-clear{display:none;width:100%;background:var(--bg);border:none;border-radius:var(--rad);padding:6px 10px;font-family:var(--font);font-size:10px;font-weight:600;color:var(--ink3);cursor:pointer;text-align:center;transition:all var(--tr);margin-top:2px;box-shadow:var(--nm-raised)}
+.role-clear:hover{color:var(--ms);box-shadow:var(--nm-inset)}
+.role-clear.visible{display:block}
+
+/* ── FOOTER ── */
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:14px 36px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-t{font-size:10px;color:var(--ink3)}
+.foot-lk{font-size:10px;background:var(--pg-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;font-family:var(--mono);font-weight:600}
+.foot-lk:hover{opacity:.75}
+
+/* ── GRADIENT UTILITIES ── */
+.leg-lv-row[data-level="ab"] .leg-strip{background:var(--pg-grad)!important}
+
+/* ── SMOOTH SCROLL ── */
+html{scroll-behavior:smooth}
+
+/* ── ACCESSIBILITY ── */
+:focus-visible{outline:none;box-shadow:0 0 0 2px #FF7A2F,0 0 0 3px #D4279C;border-radius:4px}
+a.cert-card:focus-visible{box-shadow:0 0 0 3px rgba(255,122,47,.35)}
+
+/* ── PRINT ── */
+@media print{
+  .col-plat,.col-roles{display:none}
+  .body{grid-template-columns:1fr}
+  .role-section.dim,.role-section.no-match{display:block!important;opacity:1!important;pointer-events:auto!important}
+  .cert-card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border:1px solid #ddd}
+  .header{box-shadow:none;border-bottom:3px solid transparent;border-image:var(--pg-grad) 1}
+  .legend{box-shadow:none;border:1px solid #ddd}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="header-left">
+      <div class="ms-logo-row">
+        <div class="ms-sq"><span></span><span></span><span></span><span></span></div>
+        <span class="ms-wm">Microsoft Certifications</span>
+      </div>
+      <div class="h-title">Microsoft <em>AI-driven</em> Certification Map<br>— paths by job role</div>
+      <div class="h-sub">Overview of Microsoft certifications following the strategic shift from traditional SaaS applications to AI-driven solutions powered by AI Agents, Copilot, and Microsoft Foundry. Use the panels on left, right, and legend to filter.</div>
+      <div class="h-chips">
+        <span class="chip c-date">Updated: April 2026</span>
+        <span class="chip c-new">10+ new AI certifications</span>
+        <span class="chip c-warn">11 certifications retiring in 2026</span>
+      </div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend">
+      <div class="leg-hd">Legend &amp; Filters</div>
+      <div class="leg-hint">Click any item to filter the map</div>
+      <div class="leg-lv-row" data-level="fund" onclick="filterLevel(this,'fund')">
+        <div class="leg-strip" style="background:var(--lv-fund)"></div>Fundamentals
+      </div>
+      <div class="leg-lv-row" data-level="assoc" onclick="filterLevel(this,'assoc')">
+        <div class="leg-strip" style="background:var(--lv-assoc)"></div>Associate
+      </div>
+      <div class="leg-lv-row" data-level="expert" onclick="filterLevel(this,'expert')">
+        <div class="leg-strip" style="background:var(--lv-expert)"></div>Expert
+      </div>
+      <div class="leg-lv-row" data-level="spec" onclick="filterLevel(this,'spec')">
+        <div class="leg-strip" style="background:var(--lv-spec)"></div>Specialty
+      </div>
+      <div class="leg-lv-row" data-level="ret" onclick="filterLevel(this,'ret')">
+        <div class="leg-strip" style="background:var(--lv-ret)"></div>Retiring in 2026
+      </div>
+      <div class="leg-lv-row" data-level="ab" onclick="filterLevel(this,'ab')">
+        <div class="leg-strip" style="background:var(--lv-ab)"></div>Agentic AI (AB)
+      </div>
+      <div class="leg-div"></div>
+      <div class="leg-bd-row">
+        <span class="leg-bd" style="background:var(--new-bg);color:var(--new-ink);border-color:var(--new-br)" data-badge="new" onclick="filterBadge(this,'new')">NEW</span>
+        New 2025–2026
+      </div>
+      <div class="leg-bd-row">
+        <span class="leg-bd" style="background:var(--beta-bg);color:var(--beta-ink);border-color:var(--beta-br)" data-badge="beta" onclick="filterBadge(this,'beta')">BETA</span>
+        Exam in beta
+      </div>
+      <div class="leg-bd-row">
+        <span class="leg-bd" style="background:var(--ret-bg);color:var(--ret-ink);border-color:var(--ret-br);text-decoration:line-through" data-badge="ret" onclick="filterBadge(this,'ret')">RET</span>
+        Retiring in 2026
+      </div>
+      <div class="leg-clear" id="legClearBtn" onclick="clearLegend()">Clear legend filter</div>
+    </div>
+  </div>
+
+  <div class="header-stats" id="summaryBar">
+    <div class="sum-label">Showing</div>
+    <div class="sum-stat" id="sumTotal"><span class="sum-n" id="snTotal">—</span><span class="sum-k">total</span></div>
+    <div class="sum-divider"></div>
+    <div class="sum-stat"><div class="sum-dot" style="background:var(--lv-fund)"></div><span class="sum-n" id="snFund">—</span><span class="sum-k">Fundamentals</span></div>
+    <div class="sum-stat"><div class="sum-dot" style="background:var(--lv-assoc)"></div><span class="sum-n" id="snAssoc">—</span><span class="sum-k">Associate</span></div>
+    <div class="sum-stat"><div class="sum-dot" style="background:var(--lv-expert)"></div><span class="sum-n" id="snExpert">—</span><span class="sum-k">Expert</span></div>
+    <div class="sum-stat"><div class="sum-dot" style="background:var(--lv-spec)"></div><span class="sum-n" id="snSpec">—</span><span class="sum-k">Specialty</span></div>
+    <div class="sum-stat"><div class="sum-dot" style="background:linear-gradient(135deg,#FF7A2F 0%,#D4279C 100%)"></div><span class="sum-n" id="snAb">—</span><span class="sum-k">Agentic AI</span></div>
+    <div class="sum-stat"><div class="sum-dot" style="background:var(--lv-ret)"></div><span class="sum-n" id="snRet">—</span><span class="sum-k">Retiring</span></div>
+    <div class="sum-divider"></div>
+    <div class="sum-of" id="sumOf">of <strong id="snTotalAll">—</strong> total certs</div>
+    <div class="sum-reset" id="sumReset" onclick="clearAll()">× Clear all filters</div>
+  </div>
+</div>
+
+<div class="shift">
+  <strong>Microsoft Strategic Shift 2025–2026:</strong> The entire certification portfolio has been realigned around
+  <strong>AI Agents · Microsoft Foundry · Copilot Studio · RAG · MCP · A2A</strong>.
+  Certifications (AI-102, AZ-204, DP-100, AI-900, PL-200, PL-500, PL-600, MB-280, MB-700, AZ-500) are being retired and replaced by new credentials designed for the agentic AI era.
+</div>
+
+<div class="body" id="mainBody">
+
+<!-- LEFT -->
+<div class="col-plat">
+  <div class="col-label">Microsoft Platforms</div>
+  <div class="panel-hint">Click to filter certifications</div>
+
+  <button class="plat-btn" data-plat="azure" onclick="filterPlat(this)">
+    <div class="pb-row">
+      <div class="pb-iw"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAmCAYAAAC29NkdAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAIsUlEQVR42q2YW4ydVRXHf2vt73IuM8Ot5WZjCCClQBvKiAUEC2hUDMK05YwRo4lG6pMPmvigLwMm8uIT8akkSnzQhKkSA94iqJ0EHiQQglxKFSylXEtvM51z/c5ey4fvdErbmTMjcpL/yznfOft/1m/vddnCil4uACM3/mhVqOWPxV77U+fesNHXTG5R6xWICL70dwFMk0S813vaD7375Sdv+8RBAER8uZV1Rf423xtAXGvV7VI7a5MmaXz3iRmdf20vkmVYNNx9CYE72i+KmKwe3cTYqu2I+OZdhJUsvTKDM/dGQAnJpPf7LmlF3ANHn/snGgJuBuZDJYb05/puyCRTUzpzM/GjMTg1pSB+5ud/vF5CdhXWB0LQSp3Zl/dQzDdBBDcfEkXHzUNstZEsu+rT1397PSI+5a7/v8Fd5TMe8i2S1hSRiCihWqf97kFar+8nJDlEB5Ol5YI7ManW1Kq1LQC7dvERGJy5N8KUorIVNwRVRJAkwyPMvvgSBMUGkWKYzDR2IzhbVop5uMFGI4D4GV+qbyDkV3ks3DUoEnBRtDLC3O5/0z/WRBCIVqJeQhgam/MuSb7+hmvv2YCIN6anw4c3eOAKKdOBbpOsLi4aXRSXAKJotU77wCGa+/YjSYpHH2rQHcw9aq0uloVtAAdWN+TDGxzgddUJt6J8XgARkICkKWbC3Mu7kaCYG87ww4K7WreHa5hYCWZdFu/ttatJKle69R1VRRRUQRQIhEqduX+9Sn++iYiWaWXoXkRjq+mSVq68bvybVy+HWZfDayHf6llVTCSaKCaCieCqZRSrdToHj9B6462Fg+MmQ2VG1OqoWJpvXQ6zDsXbaAQkTGCGEFREEQmIBHxwUCTJcVNmd78CqpjZ8HxYSmO3i6FbaEyHYZh1KN7ixqtJ8iuIPUdOflaOR5EyivOv/oe4gHlQgpeQOGqtpmtWXXft5DUbh2HWoXg9bJO0JseT86kSDbgIWqnTOXSU9v630CQblDeWlgtuxFAZFfKRoZh1GF4LyYSb4QT1BawnC1VIMpzA3J49AFg/4tGGCjONnRaOTzSml8Z8usHGdADxseK6cU3ydR57XnJb7CUgycJhmd+7j9hsIbqSRkXU2i2XvLZubxi/ZinMpy98YLUAuNa2klZAPJa5bykpoKb1s+kcPDTj5jNSGcHMzV0YJnOJWhnFpLpk0j7d4MzNkc1TiYcwgUeQoIvtvwWpggaTrE7RKh6qjI4+FEKGGCbmDJW7WqcNyMTmqb8ni2HWxfCOrlo9LkltLbFwER2klyXlaAhetPtFp/fX3PyJYvZgHyS4mQ+tKoZau+khr66dX3vh+GKYdTG8ppWtnuYYxGEdVCk3T6vibv/ghZ+9+bfP1d+yTudpyWpi5ubRWVLmWPQoWR1Laoti1sXwIjrhtgK8oiDBJclA+M3C9nfbKZrg5r5c0gbX2GkDeudimPU0vOdecK1ktcuIfVuovcMNBi/avcTs0YUfbXYeLY4dLkQk4LZsbbZuyySrXjZ38XnXnopZT8UbtbKNtAqCLX5s9QOSKGlNMHt2NqzaR2M6Y+rF7Jk/P7/PO91nJBsRM6IbDJNFN8nrWFI/DXNyAu8tkfHtqYveYbFX5g85eXgU9/IXT7zriOO95oM88o0IRBk8W/3qezt6Eq53w5Hlplo0dto4euf49h0/nLmF/gcy7QDvzsk4+pVf3BAro0/RL+zU2gvgSY6HZDADS9kXIhaz/Hteqb/j/ZjiHugdk1qFj128aeNPRFUcX0HixjTN1Q8fuPH5ey5/qjE9HXZOTsbkZLz5XZKO4HHOTq4eZVw6qy7G0wp4XPhvgJLkD6BhwKtAijHmD++nefAwY+efTyzK4X5oEN1Na3WNeW0r8NRxzLKw0viOpH756G6y2iX0e6dEUMCNWB2je9aaQTz8hEl34/jlQuy7WB8/+racc/4Z4eMbrqLf6y1rENwkq6q35l9LewfWPfud8T4ISmNaAR+5rLLJs9olHgtzEXWEEwIXJbRmyQ6/cbyUHr/WoIy2BJCASuIqCXk9HDt0hKLTLT92WU5q3Y5JZeSSgpFNIN6YdlWuWH28c76LtEpZIoXFZElK6DTJD+1DzEqTftKpGRgXyKv0On2aR44gISnH0qFtouCOSVbDkspd5c4b7HIaU2m1cuUestpFp+M9vYMRi8S04r2z14hnNei1y5y5sN0LxAr8yDucfe4Ya9b/b5itdex19j+99uX7GkWJN7t0k+QjFxGLweEY1r7gnuSEotNMD++9Q4r2Xqpjinv/g1F0UajUOXb4KLHTIYiiZTc9RKJ025ZURy8K5125CaS8G+mHylaSCoCVI+VQGUmOizzb+/mWx7LZt2+VbvMVKmPJgkkZJPSsStHr0zx8BJFyXmGZ2wc3N0mrxFDdWqaILz6Qi4TbLfZwUV1q/5VSHHE0AY8P05gO3R23vV5987lbpTP3HNUzEsz7oCCChBRCzuz7B8vF4/LCXGO7hTi3X/rdP+ZaX33eTZ5VLsV6TlAt+7slJDhJkngx3/Hu/O/ZORnZ/kza+tXX3xl784XPSvvoU9TPLCM5+EPkNeaPzFK0u4CsYOJDrdNyksqlySVrPqMxze8mrYIGW7Yx0GBkNcCf7Dz8rf1MufLgJwsa02H21187cu5zf/mCNA89Tu2sBLQoMdcoij7No0cRTSgpyzLCSKsQqnerS9ji/Y47hOFpANzNEcU9/nZwN1ee3J2TkSnX9x7/QdP/cP/t0jz4CPVzUpC+aAIhZ+7Q+4CvZGbGIVi35ahOKKI5IRNE/XiuXVzqpNXEu62e9vuPDQyeyIH3iTE1pbw0XfhPN94l8wceonZmgiZOUsElGVyLsLzMHQmCk4dkw7b3SLObwPOFoXXRaVsNTTrSPXZv55eNPzHlyn23nJykZ2YcUG7eJdx/4e/CNXev9iTdkCei512wSlQVLILZEEUvL9flqLWOff+/Z0db6J5tZJ8AAAAASUVORK5CYII=" width="16" height="15" style="object-fit:contain;flex-shrink:0;display:block"></div>
+      <div class="pb-name">Azure + Foundry</div>
+    </div>
+    <div class="pb-sub">Cloud · AI · DevOps · GitHub</div>
+    <div class="pb-tags"><span class="pb-tag">Azure AI Services</span><span class="pb-tag">Foundry</span><span class="pb-tag">Azure ML</span><span class="pb-tag">Databricks</span><span class="pb-tag">Container Apps</span></div>
+  </button>
+
+  <button class="plat-btn" data-plat="m365" onclick="filterPlat(this)">
+    <div class="pb-row">
+      <div class="pb-iw"><svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><path d="M20.0842 3.02539L19.8595 3.1613C19.5021 3.3775 19.1654 3.61923 18.8512 3.88336L19.4993 3.42749H25L26 10.9995L21 15.9995L16 19.4749V23.4824C16 26.2814 17.4629 28.8769 19.8574 30.3263L25.1211 33.5124L14 39.9997H11.8551L7.85737 37.5799C5.46286 36.1305 4 33.535 4 30.736V17.2601C4 14.4602 5.46379 11.864 7.85952 10.4149L19.8595 3.15638C19.9339 3.11141 20.0088 3.06774 20.0842 3.02539Z" fill="url(#ms365_p0)"/><path d="M20.0842 3.02539L19.8595 3.1613C19.5021 3.3775 19.1654 3.61923 18.8512 3.88336L19.4993 3.42749H25L26 10.9995L21 15.9995L16 19.4749V23.4824C16 26.2814 17.4629 28.8769 19.8574 30.3263L25.1211 33.5124L14 39.9997H11.8551L7.85737 37.5799C5.46286 36.1305 4 33.535 4 30.736V17.2601C4 14.4602 5.46379 11.864 7.85952 10.4149L19.8595 3.15638C19.9339 3.11141 20.0088 3.06774 20.0842 3.02539Z" fill="url(#ms365_p1)"/><path d="M31.9973 19V23.4803C31.9973 26.2793 30.5344 28.8748 28.1399 30.3242L16.1399 37.5878C13.6852 39.0737 10.6308 39.1273 8.13281 37.7487L19.8546 44.844C22.4013 46.3855 25.5932 46.3855 28.1399 44.844L40.1399 37.5803C42.5344 36.1309 43.9972 33.5354 43.9972 30.7364V27.5L42.9973 26L31.9973 19Z" fill="url(#ms365_p2)"/><path d="M31.9973 19V23.4803C31.9973 26.2793 30.5344 28.8748 28.1399 30.3242L16.1399 37.5878C13.6852 39.0737 10.6308 39.1273 8.13281 37.7487L19.8546 44.844C22.4013 46.3855 25.5932 46.3855 28.1399 44.844L40.1399 37.5803C42.5344 36.1309 43.9972 33.5354 43.9972 30.7364V27.5L42.9973 26L31.9973 19Z" fill="url(#ms365_p3)"/><path d="M40.1405 10.4153L28.1405 3.15678C25.6738 1.66471 22.6021 1.61849 20.0979 3.01811L19.8595 3.16231C17.4638 4.61143 16 7.20757 16 10.0075V19.4914L19.8595 17.1568C22.4051 15.6171 25.5949 15.6171 28.1405 17.1568L40.1405 24.4153C42.4613 25.8192 43.9076 28.2994 43.9957 30.9985C43.9986 30.9113 44 30.824 44 30.7364V17.2605C44 14.4606 42.5362 11.8644 40.1405 10.4153Z" fill="url(#ms365_p4)"/><path d="M40.1405 10.4153L28.1405 3.15678C25.6738 1.66471 22.6021 1.61849 20.0979 3.01811L19.8595 3.16231C17.4638 4.61143 16 7.20757 16 10.0075V19.4914L19.8595 17.1568C22.4051 15.6171 25.5949 15.6171 28.1405 17.1568L40.1405 24.4153C42.4613 25.8192 43.9076 28.2994 43.9957 30.9985C43.9986 30.9113 44 30.824 44 30.7364V17.2605C44 14.4606 42.5362 11.8644 40.1405 10.4153Z" fill="url(#ms365_p5)"/><defs><radialGradient id="ms365_p0" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17.4186 10.6379) rotate(110.528) scale(33.3657 58.1966)"><stop offset="0.06441" stop-color="#AE7FE2"/><stop offset="1" stop-color="#0078D4"/></radialGradient><linearGradient id="ms365_p1" x1="17.5119" y1="37.868" x2="12.7513" y2="29.6342" gradientUnits="userSpaceOnUse"><stop stop-color="#114A8B"/><stop offset="1" stop-color="#0078D4" stop-opacity="0"/></linearGradient><radialGradient id="ms365_p2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(10.4272 36.3511) rotate(-8.36717) scale(31.0503 20.5108)"><stop offset="0.133928" stop-color="#D59DFF"/><stop offset="1" stop-color="#5E438F"/></radialGradient><linearGradient id="ms365_p3" x1="40.3539" y1="25.3768" x2="35.2525" y2="32.6916" gradientUnits="userSpaceOnUse"><stop stop-color="#493474"/><stop offset="1" stop-color="#8C66BA" stop-opacity="0"/></linearGradient><radialGradient id="ms365_p4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(41.0552 26.504) rotate(-165.772) scale(24.9228 41.9552)"><stop offset="0.0584996" stop-color="#50E6FF"/><stop offset="1" stop-color="#436DCD"/></radialGradient><linearGradient id="ms365_p5" x1="16.9758" y1="3.05655" x2="24.4868" y2="3.05655" gradientUnits="userSpaceOnUse"><stop stop-color="#2D3F80"/><stop offset="1" stop-color="#436DCD" stop-opacity="0"/></linearGradient></defs></svg></div>
+      <div class="pb-name">Microsoft 365</div>
+    </div>
+    <div class="pb-sub">Copilot · Teams · SharePoint</div>
+    <div class="pb-tags"><span class="pb-tag">M365 Copilot</span><span class="pb-tag">Teams</span><span class="pb-tag">SharePoint</span><span class="pb-tag">Endpoint</span></div>
+  </button>
+
+  <button class="plat-btn" data-plat="d365" onclick="filterPlat(this)">
+    <div class="pb-row">
+      <div class="pb-iw"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="flex-shrink:0"><g clip-path="url(#d365_c0)"><path d="M8 8.648C8 1.485 12.793-.307 18.001.041 54.959 2.51 88 13.461 88 27.527V70.863C88 64.136 81.206 58.511 70.679 54.105 69.082 53.436 68.004 51.895 68.004 50.164V36.012C68.004 27.913 64.607 24.518 58.004 22.63 51.401 20.743 47.996 22.834 47.996 30.273V37.369C47.996 42.355 44.744 45.637 39.011 46.573 33.278 47.51 28.411 48.065 21.008 48.735 13.604 49.404 8 44.646 8 36.59V8.648Z" fill="url(#d365_g0)"/><path d="M8 8.648C8 1.485 12.793-.307 18.001.041 54.959 2.51 88 13.461 88 27.527V70.863C88 64.136 81.206 58.511 70.679 54.105 69.082 53.436 68.004 51.895 68.004 50.164V36.012C68.004 27.913 64.607 24.518 58.004 22.63 51.401 20.743 47.996 22.834 47.996 30.273V37.369C47.996 42.355 44.744 45.637 39.011 46.573 33.278 47.51 28.411 48.065 21.008 48.735 13.604 49.404 8 44.646 8 36.59V8.648Z" fill="url(#d365_g1)"/><path d="M8 8.648C8 1.485 12.793-.307 18.001.041 54.959 2.51 88 13.461 88 27.527V70.863C88 64.136 81.206 58.511 70.679 54.105 69.082 53.436 68.004 51.895 68.004 50.164V36.012C68.004 27.913 64.607 24.518 58.004 22.63 51.401 20.743 47.996 22.834 47.996 30.273V37.369C47.996 42.355 44.744 45.637 39.011 46.573 33.278 47.51 28.411 48.065 21.008 48.735 13.604 49.404 8 44.646 8 36.59V8.648Z" fill="url(#d365_g2)"/><path d="M88 27.527C88 39.061 66.827 48.03 40 52.457 33.248 53.571 28 56.729 28 63.778V85.302C28 95.511 34.144 96.855 41.998 95.511 70.195 90.685 88 80.772 88 70.827V27.527Z" fill="url(#d365_g3)"/><path d="M88 27.527C88 39.061 66.827 48.03 40 52.457 33.248 53.571 28 56.729 28 63.778V85.302C28 95.511 34.144 96.855 41.998 95.511 70.195 90.685 88 80.772 88 70.827V27.527Z" fill="url(#d365_g4)" fill-opacity="0.5"/><path opacity="0.5" d="M68 62.357C68 70.74 65.071 73.709 58.004 75.724 51.831 77.483 48 76.807 48 68.077V50.964C55.402 49.417 62.195 47.507 68 45.278V62.357Z" fill="url(#d365_g5)"/></g><defs><linearGradient id="d365_g0" x1="18.133" y1="2.115" x2="47.183" y2="60.955" gradientUnits="userSpaceOnUse"><stop stop-color="#367AF2"/><stop offset="0.287" stop-color="#2764E7"/><stop offset="0.66" stop-color="#4A43CB"/><stop offset="1" stop-color="#6D37CD"/></linearGradient><radialGradient id="d365_g1" cx="0" cy="0" r="1" gradientTransform="matrix(17.661 52.344 -119.087 40.845 39.939 1.596)" gradientUnits="userSpaceOnUse"><stop offset="0.62" stop-color="#5750E2" stop-opacity="0"/><stop offset="1" stop-color="#4B20A0"/></radialGradient><radialGradient id="d365_g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(30.5 50.687) rotate(-90) scale(53.369 95.728)"><stop offset="0.55" stop-color="#2764E7" stop-opacity="0"/><stop offset="1" stop-color="#AC80FF"/></radialGradient><linearGradient id="d365_g3" x1="67.474" y1="92.971" x2="67.474" y2="36.947" gradientUnits="userSpaceOnUse"><stop stop-color="#2052CB"/><stop offset="0.406" stop-color="#2764E7"/><stop offset="1" stop-color="#BD96FF"/></linearGradient><linearGradient id="d365_g4" x1="73.263" y1="49.838" x2="88" y2="49.838" gradientUnits="userSpaceOnUse"><stop stop-color="#367AF2" stop-opacity="0"/><stop offset="0.489" stop-color="#4BA3F3" stop-opacity="0.377"/><stop offset="1" stop-color="#6FE8F5"/></linearGradient><linearGradient id="d365_g5" x1="57.679" y1="45.478" x2="57.679" y2="74.14" gradientUnits="userSpaceOnUse"><stop stop-color="#CEB0FF"/><stop offset="1" stop-color="#4894FE"/></linearGradient><clipPath id="d365_c0"><rect width="96" height="96" fill="white"/></clipPath></defs></svg></div>
+      <div class="pb-name">Dynamics 365</div>
+    </div>
+    <div class="pb-sub">ERP · CRM · Contact Center AI</div>
+    <div class="pb-tags"><span class="pb-tag">Business Central</span><span class="pb-tag">Sales AI</span><span class="pb-tag">Finance &amp; Ops</span><span class="pb-tag">Contact Center AI</span></div>
+  </button>
+
+  <button class="plat-btn" data-plat="pp" onclick="filterPlat(this)">
+    <div class="pb-row">
+      <div class="pb-iw"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="flex-shrink:0"><g clip-path="url(#pp_c0)"><path d="M38.103 71.692L31.653 91.041C30.119 95.644 24.482 97.328 20.675 94.322L4.899 81.868C1.959 79.547.789 75.632 1.974 72.079 3.184 68.449 6.581 66 10.408 66H46C42.417 66 39.236 68.293 38.103 71.692Z" fill="url(#pp_g0)"/><path d="M38.103 71.692L31.653 91.041C30.119 95.644 24.482 97.328 20.675 94.322L4.899 81.868C1.959 79.547.789 75.632 1.974 72.079 3.184 68.449 6.581 66 10.408 66H46C42.417 66 39.236 68.293 38.103 71.692Z" fill="url(#pp_g1)"/><path d="M24.325 30H60.834C74.781 30 89.147 40.024 85.286 51.588L95.406 21.274C98.191 13.115 89.451 0 69.818 0H30.325C27.742 0 25.449 1.653 24.632 4.103L18.632 22.103C17.337 25.988 20.229 30 24.325 30Z" fill="url(#pp_g2)"/><path d="M24.325 30H60.834C74.781 30 89.147 40.024 85.286 51.588L95.406 21.274C98.191 13.115 89.451 0 69.818 0H30.325C27.742 0 25.449 1.653 24.632 4.103L18.632 22.103C17.337 25.988 20.229 30 24.325 30Z" fill="url(#pp_g3)"/><path d="M59.833 66H11.208C6.904 66 3.084 68.753 1.722 72.834L11.721 42.838C13.082 38.754 16.903 36 21.208 36H69.815C83.266 36 92.621 29.669 95.501 21.026L85.294 51.697C82.952 58.694 74.5 66 59.833 66Z" fill="url(#pp_g4)"/><path d="M59.833 66H11.208C6.904 66 3.084 68.753 1.722 72.834L11.721 42.838C13.082 38.754 16.903 36 21.208 36H69.815C83.266 36 92.621 29.669 95.501 21.026L85.294 51.697C82.952 58.694 74.5 66 59.833 66Z" fill="url(#pp_g5)"/></g><defs><linearGradient id="pp_g0" x1="4" y1="70" x2="16" y2="105.5" gradientUnits="userSpaceOnUse"><stop stop-color="#309C61"/><stop offset="1" stop-color="#1EC8B0"/></linearGradient><radialGradient id="pp_g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25.499 102) rotate(-90) scale(44 55.163)"><stop offset="0.615" stop-color="#1E794A" stop-opacity="0"/><stop offset="1" stop-color="#1E794A"/></radialGradient><linearGradient id="pp_g2" x1="30" y1="12.5" x2="90.416" y2="29.185" gradientUnits="userSpaceOnUse"><stop stop-color="#20AC9D"/><stop offset="0.568" stop-color="#1A7F7C"/><stop offset="1" stop-color="#024169"/></linearGradient><linearGradient id="pp_g3" x1="60" y1="1" x2="75.5" y2="42.5" gradientUnits="userSpaceOnUse"><stop stop-color="#1A7F7C" stop-opacity="0"/><stop offset="0.589" stop-color="#004695" stop-opacity="0.6"/><stop offset="1" stop-color="#003580"/></linearGradient><linearGradient id="pp_g4" x1="16" y1="41" x2="74" y2="65.5" gradientUnits="userSpaceOnUse"><stop stop-color="#76EB95"/><stop offset="0.179" stop-color="#52D17C"/><stop offset="0.714" stop-color="#22918B"/><stop offset="1" stop-color="#0C74A1"/></linearGradient><linearGradient id="pp_g5" x1="21" y1="53.5" x2="11.5" y2="49.5" gradientUnits="userSpaceOnUse"><stop stop-color="#52D17C" stop-opacity="0"/><stop offset="1" stop-color="#B0F098"/></linearGradient><clipPath id="pp_c0"><rect width="96" height="96" fill="white"/></clipPath></defs></svg></div>
+      <div class="pb-name">Power Platform</div>
+    </div>
+    <div class="pb-sub">Copilot Studio · Apps · Automate</div>
+    <div class="pb-tags"><span class="pb-tag">Copilot Studio</span><span class="pb-tag">Power Apps</span><span class="pb-tag">Power Automate</span><span class="pb-tag">Dataverse</span></div>
+  </button>
+
+  <button class="plat-btn" data-plat="fabric" onclick="filterPlat(this)">
+    <div class="pb-row">
+      <div class="pb-iw"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><g clip-path="url(#fab_c0)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.496 176.634L6.747 190.356C5.349 194.746 3.392 201.194 2.336 206.932.832 210.9.011 215.204.011 219.7.011 238.239 14.016 253.502 32.021 255.497 37.088 256.228 42.821 256.19 49.248 255.246L78.773 251.172C86.197 250.148 92.293 244.788 94.266 237.556L114.586 162.922 10.496 176.634Z" fill="url(#fab_g0)"/><path d="M39.294 180.17C8.174 184.991 1.785 208.474 1.785 208.474L31.588 98.971 187.314 77.904 166.077 155.04C164.973 159.173 161.501 162.341 157.197 162.997L156.328 163.141 38.42 180.32 39.294 180.17Z" fill="url(#fab_g1)"/><path d="M39.294 180.17C8.174 184.991 1.785 208.474 1.785 208.474L31.588 98.971 187.314 77.904 166.077 155.04C164.973 159.173 161.501 162.341 157.197 162.997L156.328 163.141 38.42 180.32 39.294 180.17Z" fill="url(#fab_g2)" fill-opacity="0.8"/><path d="M56.953 110.303L229.352 84.837C233.453 84.277 236.776 81.274 237.821 77.343L255.613 12.955C255.858 12.08 255.986 11.157 255.986 10.208 255.986 4.571 251.421 0 245.778 0 245.341 0 244.904.027 244.482.08L79.982 24.389C62.116 27.259 47.689 40.437 43.007 57.626L19.284 143.604C24.047 126.212 26.975 115.727 56.953 110.303Z" fill="url(#fab_g3)"/><path d="M56.953 110.303L229.352 84.837C233.453 84.277 236.776 81.274 237.821 77.343L255.613 12.955C255.858 12.08 255.986 11.157 255.986 10.208 255.986 4.571 251.421 0 245.778 0 245.341 0 244.904.027 244.482.08L79.982 24.389C62.116 27.259 47.689 40.437 43.007 57.626L19.284 143.604C24.047 126.212 26.975 115.727 56.953 110.303Z" fill="url(#fab_g4)"/><path d="M56.953 110.303L229.352 84.837C233.453 84.277 236.776 81.274 237.821 77.343L255.613 12.955C255.858 12.08 255.986 11.157 255.986 10.208 255.986 4.571 251.421 0 245.778 0 245.341 0 244.904.027 244.482.08L79.982 24.389C62.116 27.259 47.689 40.437 43.007 57.626L19.284 143.604C24.047 126.212 26.975 115.727 56.953 110.303Z" fill="url(#fab_g5)"/><path d="M56.953 110.309C31.988 114.827 25.79 122.869 21.662 135.472L1.785 208.49C1.785 208.49 8.137 185.242 38.878 180.271L156.333 163.162 157.203 163.018C161.507 162.362 164.979 159.189 166.083 155.061L183.554 91.606 56.958 110.309H56.953Z" fill="url(#fab_g6)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M38.88 180.272C12.901 184.475 4.368 201.68 2.336 206.923.832 210.901.011 215.205.011 219.701.011 238.24 14.016 253.504 32.021 255.498 37.088 256.229 42.821 256.192 49.248 255.248L78.773 251.173C86.197 250.149 92.293 244.789 94.266 237.557L112.789 169.51 38.885 180.278 38.88 180.272Z" fill="url(#fab_g7)"/></g><defs><linearGradient id="fab_g0" x1="57.296" y1="256.004" x2="57.296" y2="162.922" gradientUnits="userSpaceOnUse"><stop offset="0.056" stop-color="#2AAC94"/><stop offset="1" stop-color="#085954"/></linearGradient><linearGradient id="fab_g1" x1="174.916" y1="188.465" x2="85.033" y2="90.704" gradientUnits="userSpaceOnUse"><stop offset="0.042" stop-color="#ABE88E"/><stop offset="0.549" stop-color="#2AAA92"/><stop offset="0.906" stop-color="#117865"/></linearGradient><linearGradient id="fab_g2" x1="-45.966" y1="183.712" x2="39.571" y2="154.542" gradientUnits="userSpaceOnUse"><stop stop-color="#6AD6F9"/><stop offset="1" stop-color="#6AD6F9" stop-opacity="0"/></linearGradient><linearGradient id="fab_g3" x1="19.284" y1="71.802" x2="246.968" y2="71.802" gradientUnits="userSpaceOnUse"><stop offset="0.043" stop-color="#25FFD4"/><stop offset="0.874" stop-color="#55DDB9"/></linearGradient><linearGradient id="fab_g4" x1="106.921" y1="9.909" x2="155.747" y2="114.612" gradientUnits="userSpaceOnUse"><stop stop-color="#F4E084" stop-opacity="0.6"/><stop offset="0.534" stop-color="#F4E084" stop-opacity="0"/></linearGradient><linearGradient id="fab_g5" x1="137.635" y1="0" x2="137.635" y2="143.604" gradientUnits="userSpaceOnUse"><stop stop-color="#1F937E"/><stop offset="1" stop-color="#C0ECC7"/></linearGradient><linearGradient id="fab_g6" x1="75.237" y1="153.341" x2="77.872" y2="75.133" gradientUnits="userSpaceOnUse"><stop offset="0.205" stop-color="#063D3B" stop-opacity="0"/><stop offset="0.586" stop-color="#063D3B" stop-opacity="0.237"/><stop offset="0.872" stop-color="#063D3B" stop-opacity="0.75"/></linearGradient><linearGradient id="fab_g7" x1="61.226" y1="230.213" x2="42.636" y2="139.292" gradientUnits="userSpaceOnUse"><stop offset="0.064" stop-color="#063D3B" stop-opacity="0"/><stop offset="0.562" stop-color="#063D3B" stop-opacity="0.599"/><stop offset="1" stop-color="#063D3B"/></linearGradient><clipPath id="fab_c0"><rect width="255.998" height="255.998" fill="white"/></clipPath></defs></svg></div>
+      <div class="pb-name">Microsoft Fabric</div>
+    </div>
+    <div class="pb-sub">Data · Analytics · SQL AI</div>
+    <div class="pb-tags"><span class="pb-tag">Fabric Lakehouse</span><span class="pb-tag">SQL AI</span><span class="pb-tag">Power BI</span><span class="pb-tag">Data Factory</span></div>
+  </button>
+
+  <button class="plat-btn" data-plat="security" onclick="filterPlat(this)">
+    <div class="pb-row">
+      <div class="pb-iw"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><path d="M26.999 16.594V8.732C15.893 13.073 11.8 16.391 12.856 26.774 12.918 27.389 13.283 27.939 13.847 28.19 14.673 28.559 15.417 28.76 15.999 28.76 19.142 28.76 26.999 22.89 26.999 16.594Z" fill="url(#sec_g0)"/><path d="M26.999 16.594V8.732C15.893 13.073 11.8 16.391 12.856 26.774 12.918 27.389 13.283 27.939 13.847 28.19 14.673 28.559 15.417 28.76 15.999 28.76 19.142 28.76 26.999 22.89 26.999 16.594Z" fill="url(#sec_g1)" fill-opacity="0.6"/><path d="M16 4C18.116 4 22.366 5.069 24.919 5.769 25.158 5.834 25.382 5.898 25.588 5.957 26.437 6.203 27 6.989 27 7.873V9.173C26.748 14.965 24.892 16.65 19.711 20.822 19.03 21.424 18.331 21.996 17.621 22.578 16.604 23.411 15.565 24.262 14.528 25.243 14.132 25.618 13.885 26.148 13.885 26.736 13.885 27.62 14.443 28.373 15.225 28.664 15.035 28.621 14.834 28.564 14.626 28.495 12.731 27.859 10.173 26.129 8.17 23.832 6.592 13.994 9.686 9.173 16 4Z" fill="url(#sec_g2)"/><path d="M16 4C18.116 4 22.366 5.069 24.919 5.769 25.158 5.834 25.382 5.898 25.588 5.957 26.437 6.203 27 6.989 27 7.873V9.173C26.748 14.965 24.892 16.65 19.711 20.822 19.03 21.424 18.331 21.996 17.621 22.578 16.604 23.411 15.565 24.262 14.528 25.243 14.132 25.618 13.885 26.148 13.885 26.736 13.885 27.62 14.443 28.373 15.225 28.664 15.035 28.621 14.834 28.564 14.626 28.495 12.731 27.859 10.173 26.129 8.17 23.832 6.592 13.994 9.686 9.173 16 4Z" fill="url(#sec_g3)" fill-opacity="0.7"/><path d="M6.472 5.937C8.9 5.258 13.706 4 16 4 16.165 4 16.343 4.007 16.533 4.019 18.629 4.222 20.269 5.989 20.269 8.139 20.269 8.919 20.053 9.65 19.677 10.273 18.874 11.873 17.56 13.131 15.559 14.777 14.985 15.251 14.326 15.773 13.669 16.293 13.048 16.785 12.429 17.276 11.885 17.722 10.563 18.806 9.755 19.469 9.31 20.3 8.887 20.949 8.641 21.725 8.641 22.557 8.641 23.776 9.168 24.872 10.007 25.63 10.034 25.66 10.061 25.689 10.088 25.717 10.095 25.728 10.102 25.739 10.11 25.75 9.843 25.522 9.58 25.284 9.321 25.037 6.964 22.782 5 19.741 5 16.593V7.894L5 7.894C5 6.983 5.595 6.183 6.472 5.937Z" fill="url(#sec_g4)"/><path d="M6.472 5.937C8.9 5.258 13.706 4 16 4 16.165 4 16.343 4.007 16.533 4.019 18.629 4.222 20.269 5.989 20.269 8.139 20.269 8.919 20.053 9.65 19.677 10.273 18.874 11.873 17.56 13.131 15.559 14.777 14.985 15.251 14.326 15.773 13.669 16.293 13.048 16.785 12.429 17.276 11.885 17.722 10.563 18.806 9.755 19.469 9.31 20.3 8.887 20.949 8.641 21.725 8.641 22.557 8.641 23.776 9.168 24.872 10.007 25.63 10.034 25.66 10.061 25.689 10.088 25.717 10.095 25.728 10.102 25.739 10.11 25.75 9.843 25.522 9.58 25.284 9.321 25.037 6.964 22.782 5 19.741 5 16.593V7.894L5 7.894C5 6.983 5.595 6.183 6.472 5.937Z" fill="url(#sec_g5)" fill-opacity="0.8"/><defs><linearGradient id="sec_g0" x1="25.869" y1="15.93" x2="11.258" y2="27.64" gradientUnits="userSpaceOnUse"><stop offset="0.716" stop-color="#143DE0"/><stop offset="0.978" stop-color="#003375"/></linearGradient><radialGradient id="sec_g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17.68 18.746) rotate(50.287) scale(13.018 38.918)"><stop offset="0.228" stop-color="#003375"/><stop offset="0.434" stop-color="#003375" stop-opacity="0.1"/></radialGradient><radialGradient id="sec_g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(27.719 -2.728) rotate(119.584) scale(41.599 26.739)"><stop offset="0.165" stop-color="#23C0FE"/><stop offset="0.534" stop-color="#1C91FF"/></radialGradient><radialGradient id="sec_g3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13.58 12.18) rotate(43.381) scale(6.927 12.325)"><stop offset="0.144" stop-color="#1B44B1"/><stop offset="1" stop-color="#045ED1" stop-opacity="0"/></radialGradient><radialGradient id="sec_g4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20.269 2.826) rotate(126.615) scale(30.357 33.899)"><stop stop-color="#92EEFE"/><stop offset="0.613" stop-color="#15BDFB"/><stop offset="0.803" stop-color="#08B1F9"/></radialGradient><linearGradient id="sec_g5" x1="13.229" y1="12.637" x2="5" y2="12.637" gradientUnits="userSpaceOnUse"><stop offset="0.111" stop-color="#22CBFD" stop-opacity="0"/><stop offset="0.971" stop-color="#92DEFF"/></linearGradient></defs></svg></div>
+      <div class="pb-name">Security &amp; Compliance</div>
+    </div>
+    <div class="pb-sub">Defender · Sentinel · Entra · Purview</div>
+    <div class="pb-tags"><span class="pb-tag">Sentinel</span><span class="pb-tag">Defender XDR</span><span class="pb-tag">Entra ID</span><span class="pb-tag">Purview</span></div>
+  </button>
+
+  <button class="plat-btn" data-plat="github" onclick="filterPlat(this)">
+    <div class="pb-row">
+      <div class="pb-iw"><svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill:#24292F;flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div>
+      <div class="pb-name">GitHub</div>
+    </div>
+    <div class="pb-sub">Copilot · Actions · Advanced Security</div>
+    <div class="pb-tags"><span class="pb-tag">GitHub Copilot</span><span class="pb-tag">Actions</span><span class="pb-tag">Adv. Security</span></div>
+  </button>
+
+  <button class="plat-clear" id="platClearBtn" onclick="clearPlat()">Show all platforms</button>
+</div>
+
+<!-- CENTER -->
+<div class="col-center">
+
+  <!-- S1: Fundamentals -->
+  <div class="role-section anchored" data-roles="all" data-plats="azure m365 pp security fabric">
+    <div class="sec-hd"><div>
+      <div class="sec-title">Starting Point — Fundamentals</div>
+      <div class="sec-desc">Every job role — accessible validation of AI and cloud basics</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-fund" data-plats="azure" data-level="fund" data-badges="" href="https://learn.microsoft.com/credentials/certifications/azure-fundamentals" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AZ-900</span></div>
+        <div class="cert-name">Azure Fundamentals</div><div class="cert-level">Fundamentals · Cloud &amp; Azure</div>
+      </a>
+      <a class="cert-card lv-fund" data-plats="azure" data-level="fund" data-badges="new beta" href="https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-901/" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AI-901</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">Azure AI Fundamentals</div><div class="cert-level">Fundamentals · AI &amp; Foundry</div>
+        <div class="cert-arrow">replaces AI-900</div>
+      </a>
+      <a class="cert-card lv-ret" data-plats="azure" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-901/" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AI-900</span><div class="cert-badges"><span class="badge b-ret">RET 30 Jun</span></div></div>
+        <div class="cert-name">Azure AI Fundamentals</div><div class="cert-level">Fundamentals · (retiring)</div>
+      </a>
+      <a class="cert-card lv-ab" data-plats="m365" data-level="ab" data-badges="new" href="https://learn.microsoft.com/en-us/credentials/certifications/copilot-and-agent-administration-fundamentals/?practice-assessment-type=certification" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AB-900</span><div class="cert-badges"><span class="badge b-new">NEW</span></div></div>
+        <div class="cert-name">M365 Copilot &amp; Agent Admin Fundamentals</div><div class="cert-level">Fundamentals · M365 &amp; Copilot</div>
+        <div class="cert-arrow">replaces MS-900</div>
+      </a>
+      <a class="cert-card lv-fund" data-plats="security" data-level="fund" data-badges="" href="https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals" target="_blank">
+        <div class="cert-top"><span class="cert-exam">SC-900</span></div>
+        <div class="cert-name">Security, Compliance &amp; Identity Fundamentals</div><div class="cert-level">Fundamentals · Security</div>
+      </a>
+      <a class="cert-card lv-fund" data-plats="pp" data-level="fund" data-badges="" href="https://learn.microsoft.com/credentials/certifications/power-platform-fundamentals" target="_blank">
+        <div class="cert-top"><span class="cert-exam">PL-900</span></div>
+        <div class="cert-name">Power Platform Fundamentals</div><div class="cert-level">Fundamentals · Power Platform</div>
+      </a>
+      <a class="cert-card lv-fund" data-plats="fabric azure" data-level="fund" data-badges="" href="https://learn.microsoft.com/credentials/certifications/azure-data-fundamentals" target="_blank">
+        <div class="cert-top"><span class="cert-exam">DP-900</span></div>
+        <div class="cert-name">Azure Data Fundamentals</div><div class="cert-level">Fundamentals · Data &amp; AI</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S2: AI Business -->
+  <div class="role-section" data-roles="business leader" data-plats="m365 pp">
+    <div class="sec-hd"><div>
+      <div class="sec-title">AI Business</div>
+      <div class="sec-desc">Business professionals and leaders using and driving AI &amp; Copilot — no coding required</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-ab" data-plats="m365 pp" data-level="ab" data-badges="new" href="https://learn.microsoft.com/credentials/certifications/ai-business-professional" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AB-730</span><div class="cert-badges"><span class="badge b-new">NEW</span></div></div>
+        <div class="cert-name">AI Business Professional</div><div class="cert-level">Associate · Copilot in everyday work</div>
+      </a>
+      <a class="cert-card lv-ab" data-plats="m365 pp" data-level="ab" data-badges="new" href="https://learn.microsoft.com/credentials/certifications/ai-transformation-leader" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AB-731</span><div class="cert-badges"><span class="badge b-new">NEW</span></div></div>
+        <div class="cert-name">AI Transformation Leader</div><div class="cert-level">Associate · AI strategy across org</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S4: IT Admin -->
+  <div class="role-section" data-roles="admin" data-plats="m365 azure">
+    <div class="sec-hd"><div>
+      <div class="sec-title">IT Administrator &amp; M365 Engineer</div>
+      <div class="sec-desc">Administrators managing Microsoft 365 environments, Teams, and Azure infrastructure</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-assoc" data-plats="azure" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/azure-administrator" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AZ-104</span></div>
+        <div class="cert-name">Azure Administrator</div><div class="cert-level">Associate · Azure infrastructure admin</div>
+      </a>
+      <a class="cert-card lv-expert" data-plats="m365" data-level="expert" data-badges="" href="https://learn.microsoft.com/credentials/certifications/m365-administrator-expert" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MS-102</span></div>
+        <div class="cert-name">Microsoft 365 Administrator Expert</div><div class="cert-level">Expert · Full M365 admin</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="m365" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/m365-teams-administrator-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MS-700</span></div>
+        <div class="cert-name">Teams Administrator</div><div class="cert-level">Associate · Teams &amp; collaboration</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="m365" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/modern-desktop" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MD-102</span></div>
+        <div class="cert-name">Endpoint Administrator</div><div class="cert-level">Associate · Device &amp; endpoint management</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S5: AI Developer -->
+  <div class="role-section" data-roles="aidev" data-plats="azure">
+    <div class="sec-hd"><div>
+      <div class="sec-title">AI Developer — Azure &amp; Foundry</div>
+      <div class="sec-desc">Developers building AI apps, agents, and production pipelines on Azure (Python)</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-assoc" data-plats="azure" data-level="assoc" data-badges="new beta" href="https://learn.microsoft.com/credentials/certifications/azure-ai-apps-and-agents-developer-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AI-103</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">Azure AI Apps &amp; Agents Developer</div><div class="cert-level">Associate · Generative AI · Agents · Foundry</div>
+        <div class="cert-arrow">→ replaces AI-102</div>
+      </a>
+      <a class="cert-card lv-ret" data-plats="azure" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AI-102</span><div class="cert-badges"><span class="badge b-ret">RET 30 Jun</span></div></div>
+        <div class="cert-name">Azure AI Engineer Associate</div><div class="cert-level">Associate · (retiring)</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="azure" data-level="assoc" data-badges="new beta" href="https://learn.microsoft.com/en-us/training/courses/ai-200t00" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AI-200</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">Azure AI Cloud Developer</div><div class="cert-level">Associate · Cloud-native AI · Containers</div>
+        <div class="cert-arrow">→ replaces AZ-204</div>
+      </a>
+      <a class="cert-card lv-ret" data-plats="azure" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/credentials/certifications/azure-developer" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AZ-204</span><div class="cert-badges"><span class="badge b-ret">RET 31 Jul</span></div></div>
+        <div class="cert-name">Azure Developer Associate</div><div class="cert-level">Associate · (retiring)</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="azure" data-level="assoc" data-badges="new beta" href="https://learn.microsoft.com/en-us/credentials/certifications/operationalizing-machine-learning-and-generative-ai-solutions/?practice-assessment-type=certification" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AI-300</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">MLOps Engineer</div><div class="cert-level">Associate · ML Production · Governance</div>
+        <div class="cert-arrow">→ replaces DP-100</div>
+      </a>
+      <a class="cert-card lv-ret" data-plats="azure" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/credentials/certifications/azure-data-scientist" target="_blank">
+        <div class="cert-top"><span class="cert-exam">DP-100</span><div class="cert-badges"><span class="badge b-ret">RET 1 Jun</span></div></div>
+        <div class="cert-name">Azure Data Scientist Associate</div><div class="cert-level">Associate · (retiring)</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S6: Agent Builder / Power Platform -->
+  <div class="role-section" data-roles="maker d365dev" data-plats="pp">
+    <div class="sec-hd"><div>
+      <div class="sec-title">AI Agent Builder &amp; Power Platform Developer</div>
+      <div class="sec-desc">Low-code / Pro-code builders — agents in Copilot Studio, intelligent apps, automation</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-ab" data-roles="maker" data-plats="pp" data-level="ab" data-badges="new beta" href="https://learn.microsoft.com/en-us/credentials/certifications/ai-agent-builder-associate/?practice-assessment-type=certification" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AB-620</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">AI Agent Builder Associate</div><div class="cert-level">Associate · Copilot Studio · MCP · A2A</div>
+      </a>
+      <a class="cert-card lv-ab" data-roles="maker" data-plats="pp" data-level="ab" data-badges="new beta" href="https://learn.microsoft.com/en-us/training/courses/ab-410t00" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AB-410</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">Intelligent Applications Builder</div><div class="cert-level">Associate · Power Platform AI-first</div>
+        <div class="cert-arrow">→ replaces PL-200</div>
+      </a>
+      <a class="cert-card lv-ret" data-roles="maker" data-plats="pp" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/credentials/certifications/power-platform-functional-consultant-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">PL-200</span><div class="cert-badges"><span class="badge b-ret">RET 31 Aug</span></div></div>
+        <div class="cert-name">Power Platform Functional Consultant</div><div class="cert-level">Associate · (retiring)</div>
+      </a>
+      <a class="cert-card lv-assoc" data-roles="maker d365dev" data-plats="pp" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/power-platform-developer-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">PL-400</span></div>
+        <div class="cert-name">Power Platform Developer</div><div class="cert-level">Associate · Pro-code · PCF · ALM</div>
+      </a>
+      <a class="cert-card lv-ret" data-roles="maker" data-plats="pp" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/credentials/certifications/power-automate-rpa-developer-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">PL-500</span><div class="cert-badges"><span class="badge b-ret">RET 30 Jun</span></div></div>
+        <div class="cert-name">Power Automate RPA Developer</div><div class="cert-level">Associate · (retiring, no direct replacement)</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S7: D365 -->
+  <div class="role-section" data-roles="d365cons d365dev" data-plats="d365 pp">
+    <div class="sec-hd"><div>
+      <div class="sec-title">Dynamics 365</div>
+      <div class="sec-desc">ERP / CRM consultants and developers — D365 implementations, Sales AI, Contact Center AI</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-assoc" data-roles="d365cons" data-plats="d365" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/d365-business-central-functional-consultant-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MB-800</span></div>
+        <div class="cert-name">Business Central Functional Consultant</div><div class="cert-level">Associate · ERP SMB</div>
+      </a>
+      <a class="cert-card lv-assoc" data-roles="d365dev" data-plats="d365" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/d365-business-central-developer-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MB-820</span></div>
+        <div class="cert-name">Business Central Developer</div><div class="cert-level">Associate · AL Dev</div>
+      </a>
+      <a class="cert-card lv-assoc" data-roles="d365cons" data-plats="d365" data-level="assoc" data-badges="" href="https://learn.microsoft.com/en-us/credentials/certifications/d365-finance-functional-consultant-associate/?practice-assessment-type=certification" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MB-310</span></div>
+        <div class="cert-name">D365 Finance Functional Consultant</div><div class="cert-level">Associate · Finance &amp; Ops</div>
+      </a>
+      <a class="cert-card lv-assoc" data-roles="d365cons" data-plats="d365" data-level="assoc" data-badges="" href="https://learn.microsoft.com/en-us/credentials/certifications/d365-customer-service-functional-consultant-associate/?practice-assessment-type=certification" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MB-230</span></div>
+        <div class="cert-name">D365 Customer Service Consultant</div><div class="cert-level">Associate · Customer Service</div>
+      </a>
+      <a class="cert-card lv-assoc" data-roles="d365dev" data-plats="d365" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/d365-finance-and-operations-apps-developer-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MB-500</span></div>
+        <div class="cert-name">Finance &amp; Ops Apps Developer</div><div class="cert-level">Associate · X++ Dev</div>
+      </a>
+      <a class="cert-card lv-assoc" data-roles="d365cons" data-plats="d365" data-level="assoc" data-badges="" href="https://learn.microsoft.com/en-us/credentials/certifications/d365-functional-consultant-supply-chain-management/?practice-assessment-type=certification" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MB-330</span></div>
+        <div class="cert-name">Supply Chain Functional Consultant</div><div class="cert-level">Associate · SCM</div>
+      </a>
+      <a class="cert-card lv-ab" data-roles="d365cons" data-plats="d365 pp" data-level="ab" data-badges="new beta" href="https://learn.microsoft.com/en-us/training/courses/ab-210t00" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AB-210</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">D365 Sales AI Consultant</div><div class="cert-level">Associate · Sales AI · Copilot</div>
+        <div class="cert-arrow">→ replaces MB-280</div>
+      </a>
+      <a class="cert-card lv-ret" data-roles="d365cons" data-plats="d365" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/credentials/certifications/d365-customer-experience-analyst-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MB-280</span><div class="cert-badges"><span class="badge b-ret">RET 31 Jul</span></div></div>
+        <div class="cert-name">D365 Customer Experience Analyst</div><div class="cert-level">Associate · (retiring)</div>
+      </a>
+      <a class="cert-card lv-ab" data-roles="d365dev" data-plats="d365 pp" data-level="ab" data-badges="new beta" href="https://learn.microsoft.com/en-us/training/courses/ab-250t00" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AB-250</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">D365 Contact Center AI Engineer</div><div class="cert-level">Associate · CCaaS · Agents</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S8: Security -->
+  <div class="role-section" data-roles="security" data-plats="security azure">
+    <div class="sec-hd"><div>
+      <div class="sec-title">Security Engineer &amp; Compliance Specialist</div>
+      <div class="sec-desc">Cloud security engineers, SOC analysts, identity and AI security professionals</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-assoc" data-plats="security" data-level="assoc" data-badges="new beta" href="https://learn.microsoft.com/credentials/certifications/cybersecurity-business-professional" target="_blank">
+        <div class="cert-top"><span class="cert-exam">SC-730</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">Cybersecurity Business Professional</div><div class="cert-level">Associate · Security for business roles</div>
+        <div class="cert-arrow" style="color:var(--ink3)">⚠ Learning path not yet available</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="security" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/security-operations-analyst" target="_blank">
+        <div class="cert-top"><span class="cert-exam">SC-200</span></div>
+        <div class="cert-name">Security Operations Analyst</div><div class="cert-level">Associate · SOC · Sentinel</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="security" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/identity-and-access-administrator" target="_blank">
+        <div class="cert-top"><span class="cert-exam">SC-300</span></div>
+        <div class="cert-name">Identity &amp; Access Administrator</div><div class="cert-level">Associate · Entra ID · IAM</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="security" data-level="assoc" data-badges="new" href="https://learn.microsoft.com/credentials/certifications/information-security-administrator" target="_blank">
+        <div class="cert-top"><span class="cert-exam">SC-401</span><div class="cert-badges"><span class="badge b-new">NEW</span></div></div>
+        <div class="cert-name">Information Security Administrator</div><div class="cert-level">Associate · Purview · DLP</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="security azure" data-level="assoc" data-badges="new beta" href="https://learn.microsoft.com/en-us/training/courses/sc-500t00" target="_blank">
+        <div class="cert-top"><span class="cert-exam">SC-500</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">Cloud &amp; AI Security Engineer</div><div class="cert-level">Associate · AI Security · Cloud</div>
+        <div class="cert-arrow">→ replaces AZ-500</div>
+      </a>
+      <a class="cert-card lv-ret" data-plats="security azure" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/credentials/certifications/azure-security-engineer" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AZ-500</span><div class="cert-badges"><span class="badge b-ret">RET 31 Jul</span></div></div>
+        <div class="cert-name">Azure Security Engineer Associate</div><div class="cert-level">Associate · (retiring)</div>
+      </a>
+      <a class="cert-card lv-expert" data-plats="security" data-level="expert" data-badges="" href="https://learn.microsoft.com/en-us/training/courses/sc-100t00" target="_blank">
+        <div class="cert-top"><span class="cert-exam">SC-100</span></div>
+        <div class="cert-name">Cybersecurity Architect Expert</div><div class="cert-level">Expert · CISO · Enterprise Security</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S9: Data -->
+  <div class="role-section" data-roles="data" data-plats="fabric azure">
+    <div class="sec-hd"><div>
+      <div class="sec-title">Data Professional — Analyst, Engineer, SQL AI</div>
+      <div class="sec-desc">Data engineers, BI analysts, SQL developers integrating AI with data platforms</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-assoc" data-plats="fabric" data-level="assoc" data-badges="new beta" href="https://learn.microsoft.com/credentials/certifications/developing-ai-enabled-database-solutions" target="_blank">
+        <div class="cert-top"><span class="cert-exam">DP-800</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">SQL AI Developer</div><div class="cert-level">Associate · SQL + AI · T-SQL · Fabric</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="fabric" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/fabric-analytics-engineer-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">DP-600</span></div>
+        <div class="cert-name">Fabric Analytics Engineer</div><div class="cert-level">Associate · Fabric · KQL · Lakehouse</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="fabric" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/fabric-data-engineer-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">DP-700</span></div>
+        <div class="cert-name">Fabric Data Engineer</div><div class="cert-level">Associate · Pipelines · Data Factory</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="fabric pp" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/data-analyst-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">PL-300</span></div>
+        <div class="cert-name">Power BI Data Analyst</div><div class="cert-level">Associate · BI · Power BI</div>
+      </a>
+      <a class="cert-card lv-assoc" data-plats="fabric azure" data-level="assoc" data-badges="" href="https://learn.microsoft.com/credentials/certifications/azure-database-administrator-associate" target="_blank">
+        <div class="cert-top"><span class="cert-exam">DP-300</span></div>
+        <div class="cert-name">Azure Database Administrator</div><div class="cert-level">Associate · SQL · DBA</div>
+      </a>
+      <a class="cert-card lv-spec" data-plats="azure fabric" data-level="spec" data-badges="new beta" href="https://learn.microsoft.com/en-us/credentials/certifications/implementing-data-engineering-solutions-using-azure-databricks/?practice-assessment-type=certification" target="_blank">
+        <div class="cert-top"><span class="cert-exam">DP-750</span><div class="cert-badges"><span class="badge b-new">NEW</span><span class="badge b-beta">BETA</span></div></div>
+        <div class="cert-name">Azure Databricks Data Engineer</div><div class="cert-level">Specialty · Databricks · Spark</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S10: DevOps / GitHub -->
+  <div class="role-section" data-roles="devops" data-plats="azure github">
+    <div class="sec-hd"><div>
+      <div class="sec-title">DevOps Engineer &amp; GitHub Specialist</div>
+      <div class="sec-desc">CI/CD, infrastructure as code, GitHub Copilot, Actions, and Advanced Security</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-expert" data-plats="azure" data-level="expert" data-badges="" href="https://learn.microsoft.com/credentials/certifications/devops-engineer" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AZ-400</span></div>
+        <div class="cert-name">DevOps Engineer Expert</div><div class="cert-level">Expert · Azure DevOps · IaC</div>
+      </a>
+      <a class="cert-card lv-spec" data-plats="github" data-level="spec" data-badges="" href="https://learn.microsoft.com/credentials/certifications/github-foundations" target="_blank">
+        <div class="cert-top"><span class="cert-exam">GH-900</span></div>
+        <div class="cert-name">GitHub Foundations</div><div class="cert-level">Specialty · GitHub basics</div>
+      </a>
+      <a class="cert-card lv-spec" data-plats="github" data-level="spec" data-badges="new" href="https://learn.microsoft.com/credentials/certifications/github-copilot" target="_blank">
+        <div class="cert-top"><span class="cert-exam">GH-300</span><div class="cert-badges"><span class="badge b-new">NEW</span></div></div>
+        <div class="cert-name">GitHub Copilot</div><div class="cert-level">Specialty · AI-assisted Dev</div>
+      </a>
+      <a class="cert-card lv-spec" data-plats="github" data-level="spec" data-badges="" href="https://learn.microsoft.com/credentials/certifications/github-actions" target="_blank">
+        <div class="cert-top"><span class="cert-exam">GH-200</span></div>
+        <div class="cert-name">GitHub Actions</div><div class="cert-level">Specialty · CI/CD Automation</div>
+      </a>
+      <a class="cert-card lv-spec" data-plats="github" data-level="spec" data-badges="" href="https://learn.microsoft.com/credentials/certifications/github-advanced-security" target="_blank">
+        <div class="cert-top"><span class="cert-exam">GH-500</span></div>
+        <div class="cert-name">GitHub Advanced Security</div><div class="cert-level">Specialty · DevSecOps</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- S11: Architect -->
+  <div class="role-section" data-roles="architect" data-plats="azure pp d365">
+    <div class="sec-hd"><div>
+      <div class="sec-title">Solution Architect — AI-first Enterprise</div>
+      <div class="sec-desc">Architects designing full AI ecosystems: multi-agent, Foundry, Copilot, Dynamics 365</div>
+    </div></div>
+    <div class="certs-row">
+      <a class="cert-card lv-ab" data-plats="azure pp d365" data-level="ab" data-badges="new" href="https://learn.microsoft.com/credentials/certifications/agentic-ai-business-solutions-architect" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AB-100</span><div class="cert-badges"><span class="badge b-new">NEW</span></div></div>
+        <div class="cert-name">Agentic AI Business Solutions Architect</div><div class="cert-level">Expert — Flagship AI Architect 2026</div>
+      </a>
+      <a class="cert-card lv-expert" data-plats="azure" data-level="expert" data-badges="" href="https://learn.microsoft.com/credentials/certifications/azure-solutions-architect" target="_blank">
+        <div class="cert-top"><span class="cert-exam">AZ-305</span></div>
+        <div class="cert-name">Azure Solutions Architect Expert</div><div class="cert-level">Expert · Cloud Architecture</div>
+      </a>
+      <a class="cert-card lv-ret" data-plats="pp" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/credentials/certifications/power-platform-solution-architect-expert" target="_blank">
+        <div class="cert-top"><span class="cert-exam">PL-600</span><div class="cert-badges"><span class="badge b-ret">RET 30 Jun</span></div></div>
+        <div class="cert-name">Power Platform Solution Architect</div><div class="cert-level">Expert · (no successor — transition to AB-100)</div>
+      </a>
+      <a class="cert-card lv-ret" data-plats="d365" data-level="ret" data-badges="ret" href="https://learn.microsoft.com/credentials/certifications/d365-finance-and-operations-apps-solution-architect-expert" target="_blank">
+        <div class="cert-top"><span class="cert-exam">MB-700</span><div class="cert-badges"><span class="badge b-ret">RET 30 Jun</span></div></div>
+        <div class="cert-name">D365 F&amp;O Solution Architect</div><div class="cert-level">Expert · (no successor — transition to AB-100)</div>
+      </a>
+    </div>
+    <div class="ret-note">Microsoft recommends AB-100 as the target path for architects. PL-600 and MB-700 have no direct successors — Microsoft advises transitioning to AB-100 upon expiry.</div>
+  </div>
+
+</div><!-- /col-center -->
+
+<!-- RIGHT -->
+<div class="col-roles">
+  <div class="col-label">Job Roles</div>
+  <div class="panel-hint">Click to highlight certification paths</div>
+  <button class="role-btn" data-filter="all" onclick="filterRole(this)"><div class="rb-name">Starting Point</div><div class="rb-desc">Fundamentals for any role</div></button>
+  <button class="role-btn" data-filter="business" onclick="filterRole(this)"><div class="rb-name">AI Business</div><div class="rb-desc">Business users &amp; leaders — AI, Copilot, strategy</div></button>
+  <button class="role-btn" data-filter="admin" onclick="filterRole(this)"><div class="rb-name">IT Administrator</div><div class="rb-desc">M365, Teams, Endpoint, Azure admin</div></button>
+  <button class="role-btn" data-filter="maker" onclick="filterRole(this)"><div class="rb-name">Power Maker</div><div class="rb-desc">Low-code agents and Power Platform</div></button>
+  <button class="role-btn" data-filter="aidev" onclick="filterRole(this)"><div class="rb-name">AI Developer</div><div class="rb-desc">Azure, Foundry, Python, RAG, Agents</div></button>
+  <button class="role-btn" data-filter="d365cons" onclick="filterRole(this)"><div class="rb-name">D365 Consultant</div><div class="rb-desc">ERP / CRM / Sales AI Functional</div></button>
+  <button class="role-btn" data-filter="d365dev" onclick="filterRole(this)"><div class="rb-name">D365 Developer</div><div class="rb-desc">BC Dev, F&amp;O Dev, Contact Center AI</div></button>
+  <button class="role-btn" data-filter="security" onclick="filterRole(this)"><div class="rb-name">Security Engineer</div><div class="rb-desc">Cloud, AI Security, SOC, IAM</div></button>
+  <button class="role-btn" data-filter="data" onclick="filterRole(this)"><div class="rb-name">Data Professional</div><div class="rb-desc">Data Engineer, Analyst, SQL AI, MLOps</div></button>
+  <button class="role-btn" data-filter="devops" onclick="filterRole(this)"><div class="rb-name">DevOps / GitHub</div><div class="rb-desc">CI/CD, IaC, GitHub Copilot</div></button>
+  <button class="role-btn" data-filter="architect" onclick="filterRole(this)"><div class="rb-name">Solution Architect</div><div class="rb-desc">AI-first enterprise architecture</div></button>
+  <button class="role-clear" id="roleClearBtn" onclick="clearRole()">Show all roles</button>
+</div>
+
+</div><!-- /body -->
+
+<div class="footer">
+  <div class="foot-t">Based on: Microsoft Certification Poster (April 2026), Skills Hub Blog, Microsoft Learn. BETA exams — dates subject to change.</div>
+  <a class="foot-lk" href="https://aka.ms/ExploreCredentials" target="_blank">aka.ms/ExploreCredentials</a>
+</div>
+
+</div><!-- /page -->
+
+<script>
+let activeRole=null,activePlat=null,activeLevel=null,activeBadge=null;
+const TOTAL_ALL=(()=>document.querySelectorAll('.cert-card').length)();
+
+function applyFilters(){
+  const fundSection=document.querySelector('.role-section.anchored');
+  let anyFilterActive=!!(activeRole||activePlat||activeLevel||activeBadge);
+  const legendActive=!!(activeLevel||activeBadge);
+  let fundRelevant=true;
+  if(activeRole&&activeRole!=='all'){fundRelevant=false;}
+  else if(activePlat){const fp=(fundSection?.dataset.plats||'').split(' ');fundRelevant=fp.includes(activePlat);}
+  if(legendActive)fundRelevant=true;
+  if(fundSection)fundSection.classList.toggle('hide-anchor',!fundRelevant&&anyFilterActive);
+
+  document.querySelectorAll('.role-section').forEach(sec=>{
+    const roles=(sec.dataset.roles||'').split(' ');
+    const secPlats=(sec.dataset.plats||'').split(' ');
+    const roleOk=!activeRole||roles.includes(activeRole);
+    const platOk=!activePlat||secPlats.includes(activePlat);
+    const passesRolePlat=roleOk&&platOk;
+
+    sec.querySelectorAll('.cert-card').forEach(card=>{
+      const cardPlats=(card.dataset.plats||'').split(' ');
+      const cardRoles=card.dataset.roles?card.dataset.roles.split(' '):null;
+      const cardLevel=card.dataset.level||'';
+      const cardBadges=(card.dataset.badges||'').split(' ');
+      const badgeOk=!activeBadge||cardBadges.includes(activeBadge);
+      const levelOk=!activeLevel||cardLevel===activeLevel;
+      const cardPlatOk=!activePlat||cardPlats.includes(activePlat);
+      const cardRoleOk=!activeRole||!cardRoles||cardRoles.includes(activeRole);
+      card.classList.toggle('badge-dim',!badgeOk);
+      card.classList.toggle('level-dim',!levelOk||!cardPlatOk||!cardRoleOk);
+    });
+
+    let dimSection=false,hideSection=false;
+    const hasVisibleCard=()=>Array.from(sec.querySelectorAll('.cert-card')).some(c=>!c.classList.contains('badge-dim')&&!c.classList.contains('level-dim'));
+    if(legendActive){hideSection=!hasVisibleCard()||!passesRolePlat;}
+    else if(activePlat){
+      if(!platOk){dimSection=!roleOk;if(!dimSection)hideSection=true;}
+      else if(passesRolePlat){hideSection=!hasVisibleCard();}
+      else{dimSection=true;}
+    }else{dimSection=!passesRolePlat;}
+    sec.classList.toggle('dim',dimSection);
+    sec.classList.toggle('no-match',hideSection);
+  });
+  updateSummary();updateResetBtn();
+}
+
+function updateSummary(){
+  let counts={fund:0,assoc:0,expert:0,spec:0,ab:0,ret:0,total:0};
+  document.querySelectorAll('.cert-card').forEach(card=>{
+    const sec=card.closest('.role-section');
+    const secDimmed=sec?.classList.contains('dim')||sec?.classList.contains('hide-anchor')||sec?.classList.contains('no-match');
+    const cardDimmed=card.classList.contains('badge-dim')||card.classList.contains('level-dim');
+    if(secDimmed||cardDimmed)return;
+    const lv=card.dataset.level||'';
+    if(lv==='fund')counts.fund++;
+    else if(lv==='assoc')counts.assoc++;
+    else if(lv==='expert')counts.expert++;
+    else if(lv==='spec')counts.spec++;
+    else if(lv==='ab')counts.ab++;
+    else if(lv==='ret')counts.ret++;
+    counts.total++;
+  });
+  const setStat=(id,val)=>{const el=document.getElementById(id);if(!el)return;el.textContent=val;el.classList.toggle('is-zero',val===0);};
+  setStat('snTotal',counts.total);setStat('snFund',counts.fund);setStat('snAssoc',counts.assoc);
+  setStat('snExpert',counts.expert);setStat('snSpec',counts.spec);setStat('snAb',counts.ab);setStat('snRet',counts.ret);
+  document.getElementById('snTotalAll').textContent=TOTAL_ALL;
+}
+function updateResetBtn(){document.getElementById('sumReset').classList.toggle('visible',!!(activeRole||activePlat||activeLevel||activeBadge));}
+
+function filterRole(btn){const f=btn.dataset.filter;if(activeRole===f){clearRole();return;}activeRole=f;document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('roleClearBtn').classList.add('visible');promoteSection(f);applyFilters();}
+function clearRole(){activeRole=null;document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('active'));document.getElementById('roleClearBtn').classList.remove('visible');demoteSection();applyFilters();}
+function filterPlat(btn){const f=btn.dataset.plat;if(activePlat===f){clearPlat();return;}activePlat=f;document.querySelectorAll('.plat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('platClearBtn').classList.add('visible');if(!activeRole){demoteSection();document.querySelectorAll('.role-section:not(.anchored)').forEach(sec=>{const sp=(sec.dataset.plats||'').split(' ');if(sp.includes(f))sec.classList.add('promoted');});}applyFilters();}
+function clearPlat(){activePlat=null;document.querySelectorAll('.plat-btn').forEach(b=>b.classList.remove('active'));document.getElementById('platClearBtn').classList.remove('visible');if(!activeRole)demoteSection();applyFilters();}
+function filterLevel(el,level){if(activeLevel===level){activeLevel=null;el.classList.remove('active-filter');updateLegClear();applyFilters();return;}activeLevel=level;activeBadge=null;document.querySelectorAll('.leg-lv-row').forEach(r=>r.classList.remove('active-filter'));document.querySelectorAll('.leg-bd').forEach(b=>b.classList.remove('active-filter'));el.classList.add('active-filter');updateLegClear();applyFilters();}
+function filterBadge(el,badge){if(activeBadge===badge){activeBadge=null;el.classList.remove('active-filter');updateLegClear();applyFilters();return;}activeBadge=badge;activeLevel=null;document.querySelectorAll('.leg-bd').forEach(b=>b.classList.remove('active-filter'));document.querySelectorAll('.leg-lv-row').forEach(r=>r.classList.remove('active-filter'));el.classList.add('active-filter');updateLegClear();applyFilters();}
+function updateLegClear(){document.getElementById('legClearBtn').classList.toggle('visible',!!(activeLevel||activeBadge));}
+function clearLegend(){activeLevel=null;activeBadge=null;document.querySelectorAll('.leg-lv-row,.leg-bd').forEach(e=>e.classList.remove('active-filter'));updateLegClear();applyFilters();}
+function promoteSection(filter){demoteSection();document.querySelectorAll('.role-section:not(.anchored)').forEach(sec=>{const roles=(sec.dataset.roles||'').split(' ');if(roles.includes(filter))sec.classList.add('promoted');});}
+function demoteSection(){document.querySelectorAll('.role-section.promoted').forEach(s=>s.classList.remove('promoted'));}
+function clearAll(){activeRole=null;activePlat=null;activeLevel=null;activeBadge=null;document.querySelectorAll('.role-btn,.plat-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.leg-lv-row,.leg-bd').forEach(e=>e.classList.remove('active-filter'));document.getElementById('roleClearBtn').classList.remove('visible');document.getElementById('platClearBtn').classList.remove('visible');document.getElementById('legClearBtn').classList.remove('visible');demoteSection();document.querySelector('.role-section.anchored')?.classList.remove('hide-anchor');applyFilters();}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.cert-card').forEach(card=>{
+    card.addEventListener('mousedown',function(){this.classList.remove('popping');});
+    card.addEventListener('mouseup',function(){const el=this;el.classList.remove('popping');requestAnimationFrame(()=>{requestAnimationFrame(()=>{el.classList.add('popping');el.addEventListener('animationend',()=>el.classList.remove('popping'),{once:true});});});});
+  });
+  document.getElementById('snTotalAll').textContent=TOTAL_ALL;
+  applyFilters();
+});
+</script>
+</body>
+</html>
